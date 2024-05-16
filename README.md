@@ -23,7 +23,7 @@ Entrée du jeu de données :
 - etat : NON_REALISE (pour renvoyer uniquement les prochains passages et pas les horaires des courses déjà effectuées)
 - attributes : sorties souhaitées du jeu de données
   - rs_sv_cours_a : numéro de course
-  - hor_estime : heure de passage estimée du bus à l'arret
+  - hor_estime : timestamp de passage estimée du bus à l'arret
 - order_by : selon quel critère on veut ordonner les données en réponse (ici on veut les prochains passage en premier)
 - maxfeatures : nombre de réponses max souhaitées (ici 5 bus pour les 5 prochains passages max)
 - key : la clé fournie par Bordeaux Métropole
@@ -31,7 +31,7 @@ Entrée du jeu de données :
 
 Sorties du jeu de données :
   - rs_sv_cours_a : numéro de course
-  - hor_estime : heure de passage estimée du bus à l'arret
+  - hor_estime : timestamp de passage estimée du bus à l'arret
 
 Pour la deuxième requête, la particularité est qu'on filtre les résultats selon les courses qui nous intéressent :
 
