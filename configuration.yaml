@@ -1,6 +1,7 @@
 rest: 
   - scan_interval: 30 #prochains départs à Barbusse (ancien arrêt : 125537)
     resource: https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg%3A4326&filter=%7B%22rs_sv_arret_p%22%3A992%2C%22etat%22%3A%22NON_REALISE%22%7D&attributes=%5B%22rs_sv_cours_a%22%2C%22hor_estime%22%5D&maxfeatures=5&orderby=%5B%22hor_estime%22%5D&key=XXXXXX
+    # avec encodage : https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg:4326&filter={"rs_sv_arret_p":992,"etat":"NON_REALISE"}&attributes=["rs_sv_cours_a","hor_estime"]&maxfeatures=5&orderby=["hor_estime"]&key=XXXXXX
     sensor:
       - name: prochain_bus_course_0
         value_template: "{{ (value_json['features'][0]['properties']['rs_sv_cours_a']) }}"
@@ -25,6 +26,7 @@ rest:
   
   - scan_interval: 30 # Heure d'arrivée à Gambetta (arrêt anciennement 126902) 2348
     resource_template: https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg:4326&filter={"$or":[{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_0') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_1') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_2') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_3') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_4') | int(0) }}","rs_sv_arret_p":"2348"}]}&attributes=["rs_sv_cours_a","hor_estime"]&orderby=["hor_estime"]&key=XXXXXX
+    # avec encodage : https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg:4326&filter={"$or":[{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_0') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_1') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_2') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_3') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_4') | int(0) }}","rs_sv_arret_p":"2348"}]}&attributes=["rs_sv_cours_a","hor_estime"]&orderby=["hor_estime"]&key=XXXXXX
     sensor:
       - name: "arrivee_gambetta_0"
         json_attributes_path: "$.features[0].properties"
