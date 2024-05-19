@@ -7,7 +7,7 @@ Course
 {{ states('sensor.prochain_bus_course_3') }}
 {{ states('sensor.prochain_bus_course_4') }}
 
-Heure à Barbusse
+Heure à Pérès
 {{ states('sensor.prochain_bus_hor_estime_0') }}
 {{ states('sensor.prochain_bus_hor_estime_1') }}
 {{ states('sensor.prochain_bus_hor_estime_2') }}
