@@ -54,7 +54,7 @@
     </tr>
     <tr>
       <td>Quinconces</td>
-      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix3}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_4') | int)/35*100) | int }}%"></img></td>
+      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix3}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_3') | int)/35*100) | int }}%"></img></td>
       <td align="center"><font size="5">{{ states('sensor.prochain_depart_barbusse_template_3') }}</font></td>
       <td align="center">{{ t3.strftime('%H:%M') }}</td>
     </tr>
