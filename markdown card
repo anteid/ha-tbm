@@ -1,24 +1,24 @@
-## Prochains passages @Barbusse
+## Prochains passages @Pérès
 
-{% if (states('sensor.prochain_depart_barbusse_template_0') | int(-1)) > 25 -%}{% set pix0="2" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_0') | int(-1)) <= 25 %}{% set pix0="1" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_0') | int(-1)) <= 10 %}{% set pix0="0" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_0') | int(-1)) > 25 -%}{% set pix0="2" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_0') | int(-1)) <= 25 %}{% set pix0="1" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_0') | int(-1)) <= 10 %}{% set pix0="0" %}{%- endif %}
 
-{% if (states('sensor.prochain_depart_barbusse_template_1') | int(-1)) > 25 -%}{% set pix1="2" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_1') | int(-1)) <= 25 %}{% set pix1="1" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_1') | int(-1)) <= 10 %}{% set pix1="0" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_1') | int(-1)) > 25 -%}{% set pix1="2" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_1') | int(-1)) <= 25 %}{% set pix1="1" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_1') | int(-1)) <= 10 %}{% set pix1="0" %}{%- endif %}
 
-{% if (states('sensor.prochain_depart_barbusse_template_2') | int(-1)) > 25 -%}{% set pix2="2" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_2') | int(-1)) <= 25 %}{% set pix2="1" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_2') | int(-1)) <= 10 %}{% set pix2="0" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_2') | int(-1)) > 25 -%}{% set pix2="2" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_2') | int(-1)) <= 25 %}{% set pix2="1" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_2') | int(-1)) <= 10 %}{% set pix2="0" %}{%- endif %}
 
-{% if (states('sensor.prochain_depart_barbusse_template_3') | int(-1)) > 25 -%}{% set pix3="2" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_3') | int(-1)) <= 25 %}{% set pix3="1" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_3') | int(-1)) <= 10 %}{% set pix3="0" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_3') | int(-1)) > 25 -%}{% set pix3="2" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_3') | int(-1)) <= 25 %}{% set pix3="1" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_3') | int(-1)) <= 10 %}{% set pix3="0" %}{%- endif %}
 
-{% if (states('sensor.prochain_depart_barbusse_template_4') | int(-1)) > 25 -%}{% set pix4="2" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_4') | int(-1)) <= 25 %}{% set pix4="1" %}{%- endif %}
-{% if (states('sensor.prochain_depart_barbusse_template_4') | int(-1)) <= 10 %}{% set pix4="0" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_4') | int(-1)) > 25 -%}{% set pix4="2" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_4') | int(-1)) <= 25 %}{% set pix4="1" %}{%- endif %}
+{% if (states('sensor.prochain_depart_template_4') | int(-1)) <= 10 %}{% set pix4="0" %}{%- endif %}
 
 {% set t0 = strptime(state_attr('sensor.arrivee_gambetta_0', 'hor_estime'),"%Y-%m-%dT%H:%M:%S%z") %}
 {% set t1 = strptime(state_attr('sensor.arrivee_gambetta_1', 'hor_estime'),"%Y-%m-%dT%H:%M:%S%z") %}
@@ -29,33 +29,33 @@
 <table>
   <tbody align="left">
     <tr>
-      <th scope="col" width="1%"><ha-icon icon="mdi:bus"></ha-icon><ha-icon icon="mdi:numeric-2-box-outline">/<ha-icon> Destination</th>
+      <th scope="col" width="1%">Destination</th>
     <th scope="col" width="auto">Attente</th>
       <th scope="col" width="1%" align="center">min</th>
       <th scope="col" width="1%" align="center">@GBT</th>
     </tr>
     <tr>
       <td>Quinconces</td>
-      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix0}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_0') | int)/35*100) | int }}%"></img></td>
-      <td align="center"><font size="5">{{ states('sensor.prochain_depart_barbusse_template_0') }}</font></td>
+      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix0}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_template_0') | int)/35*100) | int }}%"></img></td>
+      <td align="center"><font size="5">{{ states('sensor.prochain_depart_template_0') }}</font></td>
       <td align="center">{{ t0.strftime('%H:%M') }}</td>
     </tr>
     <tr>
       <td>Quinconces</td>
-      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix1}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_1') | int)/35*100) | int }}%"></img></td>
-      <td align="center"><font size="5">{{ states('sensor.prochain_depart_barbusse_template_1') }}</font></td>
+      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix1}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_template_1') | int)/35*100) | int }}%"></img></td>
+      <td align="center"><font size="5">{{ states('sensor.prochain_depart_template_1') }}</font></td>
       <td align="center">{{ t1.strftime('%H:%M') }}</td>
     </tr>
     <tr>
       <td>Quinconces</td>
-      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix2}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_2') | int)/35*100) | int }}%"></img></td>
-      <td align="center"><font size="5">{{ states('sensor.prochain_depart_barbusse_template_2') }}</font></td>
+      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix2}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_template_2') | int)/35*100) | int }}%"></img></td>
+      <td align="center"><font size="5">{{ states('sensor.prochain_depart_template_2') }}</font></td>
       <td align="center">{{ t2.strftime('%H:%M') }}</td>
     </tr>
     <tr>
       <td>Quinconces</td>
-      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix3}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_3') | int)/35*100) | int }}%"></img></td>
-      <td align="center"><font size="5">{{ states('sensor.prochain_depart_barbusse_template_3') }}</font></td>
+      <td align="left"><img src="https://dlvn.fr/dev/pixel{{pix3}}.gif" opacity="0" height="7px" width="{{ ((states('sensor.prochain_depart_template_3') | int)/35*100) | int }}%"></img></td>
+      <td align="center"><font size="5">{{ states('sensor.prochain_depart_template_3') }}</font></td>
       <td align="center">{{ t3.strftime('%H:%M') }}</td>
     </tr>
   </tbody>
