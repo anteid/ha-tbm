@@ -1,6 +1,6 @@
 rest: 
-  - scan_interval: 30 #prochains départs à Barbusse (ancien arrêt : 125537)
-    resource: https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg%3A4326&filter=%7B%22rs_sv_arret_p%22%3A992%2C%22etat%22%3A%22NON_REALISE%22%7D&attributes=%5B%22rs_sv_cours_a%22%2C%22hor_estime%22%5D&maxfeatures=5&orderby=%5B%22hor_estime%22%5D&key=XXXXX
+  - scan_interval: 30 #prochains départs à Pérès (arrêt 163)
+    resource: https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg%3A4326&filter=%7B%22rs_sv_arret_p%22%3A163%2C%22etat%22%3A%22NON_REALISE%22%7D&attributes=%5B%22rs_sv_cours_a%22%2C%22hor_estime%22%5D&maxfeatures=5&orderby=%5B%22hor_estime%22%5D&key=XXX
     sensor:
       - name: prochain_bus_course_0
         value_template: "{{ (value_json['features'][0]['properties']['rs_sv_cours_a']) }}"
@@ -23,8 +23,8 @@ rest:
       - name: prochain_bus_hor_estime_4
         value_template: "{{ value_json['features'][4]['properties']['hor_estime'] }}"
   
-  - scan_interval: 30 # Heure d'arrivée à Gambetta (arrêt anciennement 126902) 2348
-    resource_template: https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg:4326&filter={"$or":[{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_0') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_1') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_2') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_3') | int(0) }}","rs_sv_arret_p":"2348"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_4') | int(0) }}","rs_sv_arret_p":"2348"}]}&attributes=["rs_sv_cours_a","hor_estime"]&orderby=["hor_estime"]&key=XXXXX
+  - scan_interval: 30 # Heure d'arrivée à Gambetta (arrêt 1445)
+    resource_template: https://data.bordeaux-metropole.fr/geojson/features/sv_horai_a?crs=epsg:4326&filter={"$or":[{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_0') | int(0) }}","rs_sv_arret_p":"1445"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_1') | int(0) }}","rs_sv_arret_p":"1445"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_2') | int(0) }}","rs_sv_arret_p":"1445"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_3') | int(0) }}","rs_sv_arret_p":"1445"},{"rs_sv_cours_a":"{{ states('sensor.prochain_bus_course_4') | int(0) }}","rs_sv_arret_p":"1445"}]}&attributes=["rs_sv_cours_a","hor_estime"]&orderby=["hor_estime"]&key=XXX
     sensor:
       - name: "arrivee_gambetta_0"
         json_attributes_path: "$.features[0].properties"
@@ -58,22 +58,24 @@ rest:
           - "rs_sv_cours_a"
 template:
   - sensor:
-      - name: "prochain_depart_barbusse_template_0"
+      - name: "prochain_depart_template_0"
         state: "{{ ((as_timestamp(strptime(states('sensor.prochain_bus_hor_estime_0'),\"%Y-%m-%dT%H:%M:%S%z\")) - as_timestamp(now()))/60) | round(0) }}"
         unit_of_measurement: "min"
   - sensor:
-      - name: "prochain_depart_barbusse_template_1"
+      - name: "prochain_depart_template_1"
         state: "{{ ((as_timestamp(strptime(states('sensor.prochain_bus_hor_estime_1'),\"%Y-%m-%dT%H:%M:%S%z\")) - as_timestamp(now()))/60) | round(0) }}"
         unit_of_measurement: "min"
   - sensor:
-      - name: "prochain_depart_barbusse_template_2"
+      - name: "prochain_depart_template_2"
         state: "{{ ((as_timestamp(strptime(states('sensor.prochain_bus_hor_estime_2'),\"%Y-%m-%dT%H:%M:%S%z\")) - as_timestamp(now()))/60) | round(0) }}"
         unit_of_measurement: "min"
   - sensor:
-      - name: "prochain_depart_barbusse_template_3"
+      - name: "prochain_depart_template_3"
         state: "{{ ((as_timestamp(strptime(states('sensor.prochain_bus_hor_estime_3'),\"%Y-%m-%dT%H:%M:%S%z\")) - as_timestamp(now()))/60) | round(0) }}"
         unit_of_measurement: "min"
   - sensor:
-      - name: "prochain_depart_barbusse_template_4"
+      - name: "prochain_depart_template_4"
         state: "{{ ((as_timestamp(strptime(states('sensor.prochain_bus_hor_estime_4'),\"%Y-%m-%dT%H:%M:%S%z\")) - as_timestamp(now()))/60) | round(0) }}"
         unit_of_measurement: "min"
+        Content-Type: application/json
+    is_on_template: '{{ value_json is not none and value_json.state == "running"}}'
