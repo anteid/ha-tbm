@@ -29,29 +29,3 @@ Heure à Gambetta
 {{ state_attr('sensor.arrivee_gambetta_2','hor_estime') }}
 {{ state_attr('sensor.arrivee_gambetta_3','hor_estime') }}
 {{ state_attr('sensor.arrivee_gambetta_4','hor_estime') }}
-
-# Ligne de bus
-
-Course
-{{ state_attr('sensor.ligne_0','gid') }}
-{{ state_attr('sensor.ligne_1','gid') }}
-{{ state_attr('sensor.ligne_2','gid') }}
-{{ state_attr('sensor.ligne_3','gid') }}
-{{ state_attr('sensor.ligne_4','gid') }}
-
-Ligne
-{{ state_attr('sensor.ligne_0','rs_sv_ligne_a') }}
-{{ state_attr('sensor.ligne_1','rs_sv_ligne_a') }}
-{{ state_attr('sensor.ligne_2','rs_sv_ligne_a') }}
-{{ state_attr('sensor.ligne_3','rs_sv_ligne_a') }}
-{{ state_attr('sensor.ligne_4','rs_sv_ligne_a') }}
-
-Terminus
-{{ state_attr('sensor.ligne_0','rg_sv_arret_p_na') }}
-{{ state_attr('sensor.ligne_1','rg_sv_arret_p_na') }}
-{{ state_attr('sensor.ligne_2','rg_sv_arret_p_na') }}
-{{ state_attr('sensor.ligne_3','rg_sv_arret_p_na') }}
-{{ state_attr('sensor.ligne_4','rg_sv_arret_p_na') }}
-
-
-Quinconces : 2412, 2277
