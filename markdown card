@@ -3,12 +3,15 @@
 {% set ns=namespace() %}
 {% set ns.pixels = [] %}
 {% set ns.times = [] %}
+
 {% for i in range(4) %}
-  {% set depart = states('sensor.prochain_depart_barbusse_template_' ~ i) | int(-1) %}
-  {% set pix = 2 if depart > 25 else 1 if depart > 10 else 0 %}
-  {% set ns.pixels = ns.pixels + [pix] %}
-  {% set time = strptime(state_attr('sensor.arrivee_gambetta_' ~ i, 'hor_estime'), "%Y-%m-%dT%H:%M:%S%z") %}
-  {% set ns.times = ns.times + [time] %}
+  {% if not(is_state('sensor.prochain_bus_course_'~ i,'unknown')) %}
+    {% set depart = states('sensor.prochain_depart_barbusse_template_' ~ i) | int(-1) %}
+    {% set pix = 2 if depart > 25 else 1 if depart > 10 else 0 %}
+    {% set ns.pixels = ns.pixels + [pix] %}
+    {% set time = strptime(state_attr('sensor.arrivee_gambetta_' ~ i, 'hor_estime'), "%Y-%m-%dT%H:%M:%S%z") %}
+    {% set ns.times = ns.times + [time] %}
+  {% endif %}
 {% endfor %}
 
 <table>
@@ -18,7 +21,7 @@
 <th scope="col" width="1%" align="center">min</th>
 <th scope="col" width="1%" align="center">@GBT</th>
 </tr>
-{% for i in range(4) %}
+{% for i in range(ns.times|length()) %}
   {% if ns.times[i] %}
   <tr>
     <td>Quinconces</td>
