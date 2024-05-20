@@ -23,7 +23,7 @@
 </tr>
 {% for i in range(ns.times|length()) %}
   <tr>
-    <td>Quiconces</td>
+    <td>Quinconces</td>
     <td align="left">
     <img src="https://dlvn.fr/dev/pixel{{ ns.pixels[i] }}.gif" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_' ~ i) | int) / 35 * 100) | int }}%">
     </td>
