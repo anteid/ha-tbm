@@ -22,15 +22,13 @@
 <th scope="col" width="1%" align="center">@GBT</th>
 </tr>
 {% for i in range(ns.times|length()) %}
-  {% if ns.times[i] %}
   <tr>
-    <td>Quinconces</td>
+    <td>Quiconces</td>
     <td align="left">
     <img src="https://dlvn.fr/dev/pixel{{ ns.pixels[i] }}.gif" height="7px" width="{{ ((states('sensor.prochain_depart_barbusse_template_' ~ i) | int) / 35 * 100) | int }}%">
     </td>
     <td align="center"><font size="5">{{ states('sensor.prochain_depart_barbusse_template_' ~ i) }}</font></td>
     <td align="center">{{ ns.times[i].strftime('%H:%M') }}</td>
   </tr>
-  {% endif %}
 {% endfor %}
 </table>
